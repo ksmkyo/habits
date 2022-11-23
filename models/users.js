@@ -1,34 +1,31 @@
 const Sequelize = require('sequelize')
 const db = require('./db')
 
-const habitsDb = db.define('habits', {
+const usersDb = db.define('users', {
     id: {
         type:Sequelize.INTEGER,
         autoIncrement: true,
         allowNull: false,
         primaryKey: true
     },
-    title: {
+    name: {
         type:Sequelize.STRING,
         allowNull: false,
     },
-    question: {
+    email: {
         type:Sequelize.STRING,
         allowNull: false,
     },
-    definition: {
+    password: {
         type:Sequelize.STRING,
         allowNull: false,
     },
-    qtd: {
-        type:Sequelize.INTEGER,
+    birth: {
+        type:Sequelize.DATEONLY,
         allowNull: false,
     }
 })
 
-
-// usersDb.sync();
-
 module.exports = {
-    habitsDb
+    usersDb
 }
