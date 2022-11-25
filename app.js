@@ -4,7 +4,8 @@ const app = express();
 
 app.use(express.json())
 
-const createHabit = require('./routes/habits')
+const {createHabit, readHabits} = require('./routes/habits')
+
 const createUser = require('./routes/users')
 
 app.get('/', (req, res) => {
@@ -14,6 +15,7 @@ app.get('/', (req, res) => {
 })
 
 app.post('/habits/create' , createHabit)
+app.get('/habits/read', readHabits)
 
 app.post('/users/create' , createUser )
 

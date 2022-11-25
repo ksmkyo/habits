@@ -1,6 +1,7 @@
 const { habitsDb } = require('../models/habits');
+let { habits } = require("../store")
 
-var createHabit = async (req, res) => {
+const createHabit = async (req, res) => {
     var dados = req.body;
 
     console.log(dados);
@@ -19,4 +20,14 @@ var createHabit = async (req, res) => {
     })
 }
 
-module.exports = createHabit;
+const readHabits = (req, res) => {
+    res.json({
+        status: 200,
+        habits: habits
+    })
+} 
+
+module.exports = {
+    createHabit,
+    readHabits
+} 
