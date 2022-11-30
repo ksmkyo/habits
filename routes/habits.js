@@ -27,7 +27,27 @@ const readHabits = (req, res) => {
     })
 } 
 
+const deleteHabit = async (req, res) => {
+    var dados = req.body;
+    let habitsD = await habitsDb.findOne(
+        {
+            where: dados.id
+        }
+    ).catch(e => {
+        console.log(e.message)
+    })
+    if (!habitsD){
+        console.log("erro");
+    }
+    habitsD.destroy();
+    res.json({
+        user: dados.id,
+        message: "Hábito deletado :( "
+    })
+}
+
 module.exports = {
     createHabit,
-    readHabits
+    readHabits,
+    deleteHabit
 } 
